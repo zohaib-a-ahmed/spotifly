@@ -1,14 +1,17 @@
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import Login from './components/Login';
+import AuthCallback from './components/AuthCallback'; 
 import './App.css'
 
-function App() {
-
+const App = () => {
   return (
-    <>
-      <div>
-        hello
-      </div>
-    </>
-  )
-}
+    <BrowserRouter>
+      <Routes>  {/* The Switch component renders the first Route that matches the current path */}
+        <Route path="/" Component={Login} />
+        <Route path="/auth/callback" Component={AuthCallback} />
+      </Routes>
+    </BrowserRouter>
+  );
+};
 
-export default App
+export default App;
