@@ -15,9 +15,8 @@ const Login = () => {
     
       const buildAuthUrl = (codeChallenge: string) => {
         const clientId = '3ab044b7c64444e2a8cb80639042bd70';
-        const redirectUri = encodeURIComponent('http://localhost:5173/auth/callback');
+        const redirectUri = encodeURIComponent('http://localhost:5173/auth');
         
-        // Concatenate all the scopes into a single string, separated by spaces
         const scopes = encodeURIComponent(
           'user-read-private user-read-email user-top-read playlist-read-private playlist-modify-public playlist-modify-private playlist-read-collaborative'
         );
