@@ -1,16 +1,14 @@
 import { useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
 import { Center, Text, VStack } from "@chakra-ui/react";
+import { supabase } from '../supaBaseClient';
 
 const Dash = () => {
-  const location = useLocation();
-  
-  // Retrieve the data from location.state
-  const data = location.state?.data;
   
   useEffect(() => {
-    console.log('Data received:', data);
-  }, [data]);
+    console.log('User:', supabase.auth.getUser());
+    console.log('Session:', supabase.auth.getSession());
+  });
+  
 
   return (
     <>
@@ -19,8 +17,6 @@ const Dash = () => {
           <Text fontSize={['4xl', '6xl', "9xl"]} fontWeight="bold" color='green'>
             This is the dash
           </Text>
-          <Text fontSize={['xl']} fontWeight="bold" color='green'>User: {data?.user}</Text>
-          <Text fontSize={['xl']} fontWeight="bold" color='green'> Top Tracks: {data?.topTracks.join(', ')}</Text>
         </VStack>
       </Center>
     </>
