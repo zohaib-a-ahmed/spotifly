@@ -2,10 +2,9 @@ import { Button, VStack, Text, Center } from '@chakra-ui/react';
 import { BsSpotify } from 'react-icons/bs'
 import { supabase } from '../supaBaseClient';
 import { useNavigate } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 
 const Login = () => {
-    const [access, setAccess] = useState();
 
     const navigate = useNavigate();
     useEffect(() => {
@@ -33,9 +32,6 @@ const Login = () => {
       });
       if (error) {
         console.error('Error signing in: ', error.message)
-      }
-      else {
-        setAccess(data)
       }
     }
      
