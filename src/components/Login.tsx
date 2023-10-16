@@ -2,9 +2,10 @@ import { Button, VStack, Text, Center } from '@chakra-ui/react';
 import { BsSpotify } from 'react-icons/bs'
 import { supabase } from '../supaBaseClient';
 import { useNavigate } from 'react-router-dom';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 const Login = () => {
+    const [access, setAccess] = useState();
 
     const navigate = useNavigate();
     useEffect(() => {
@@ -23,7 +24,7 @@ const Login = () => {
     }, [navigate]);
 
     async function signInWithSpotify() {
-      const { error } = await supabase.auth.signInWithOAuth({
+      const { data, error } = await supabase.auth.signInWithOAuth({
         provider: 'spotify',
         options: {
           scopes:
@@ -32,6 +33,9 @@ const Login = () => {
       });
       if (error) {
         console.error('Error signing in: ', error.message)
+      }
+      else {
+        setAccess(data)
       }
     }
      
