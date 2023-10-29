@@ -23,7 +23,7 @@ const Login = () => {
     }, [navigate]);
 
     async function signInWithSpotify() {
-      const { error } = await supabase.auth.signInWithOAuth({
+      const { data, error } = await supabase.auth.signInWithOAuth({
         provider: 'spotify',
         options: {
           scopes:
